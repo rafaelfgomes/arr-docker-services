@@ -3,8 +3,8 @@ services:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     environment:
-      - PUID=${UID}
-      - PGID=${GID}
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TIMEZONE}
     volumes:
       - ./config/prowlarr:/config
