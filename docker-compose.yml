@@ -23,6 +23,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/lidarr:/config
+      - /mnt/torrents:/downloads
     ports:
       - ${LIDARR_WEBUI_PORT:-8686}:8686
     restart: unless-stopped
@@ -38,6 +39,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/sonarr:/config
+      - /mnt/torrents:/downloads
     ports:
       - ${SONARR_WEBUI_PORT:-8989}:8989
     restart: unless-stopped
@@ -53,6 +55,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/bazarr:/config
+      - /mnt/torrents:/downloads
     ports:
       - ${BAZARR_WEBUI_PORT:-6767}:6767
     restart: unless-stopped
@@ -68,6 +71,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/readarr:/config
+      - /mnt/torrents:/downloads
     ports:
       - ${READARR_WEBUI_PORT:-8787}:8787
     restart: unless-stopped
