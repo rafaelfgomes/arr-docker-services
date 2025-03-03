@@ -23,7 +23,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/lidarr:/config
-      - /mnt/torrents:/downloads
+      - ${TORRENTS_FOLDER}:/downloads
+      - ${MUSIC_FOLDER}:/music
     ports:
       - ${LIDARR_WEBUI_PORT:-8686}:8686
     restart: unless-stopped
@@ -39,12 +40,28 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/sonarr:/config
-      - /mnt/torrents:/downloads
+      - ${TORRENTS_FOLDER}:/downloads
+      - ${TVSHOWS_FOLDER}:/tvshows
     ports:
       - ${SONARR_WEBUI_PORT:-8989}:8989
     restart: unless-stopped
     networks:
       - net
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ./config/radarr:/config
+      - ${TORRENTS_FOLDER}:/downloads
+      - ${MOVIES_FOLDER}:/movies
+    ports:
+      - 7878:7878
+    restart: unless-stopped
 
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
@@ -55,7 +72,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/bazarr:/config
-      - /mnt/torrents:/downloads
+      - ${TORRENTS_FOLDER}:/downloads
+      - ./subtitles:/subtitles
     ports:
       - ${BAZARR_WEBUI_PORT:-6767}:6767
     restart: unless-stopped
@@ -71,7 +89,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/readarr:/config
-      - /mnt/torrents:/downloads
+      - ${TORRENTS_FOLDER}:/downloads
+      - ./books:/books
     ports:
       - ${READARR_WEBUI_PORT:-8787}:8787
     restart: unless-stopped
