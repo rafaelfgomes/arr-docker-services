@@ -62,6 +62,8 @@ services:
     ports:
       - ${RADARR_WEBUI_PORT:-7878}:7878
     restart: unless-stopped
+    networks:
+      - net
 
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
