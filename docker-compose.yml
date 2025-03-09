@@ -60,7 +60,7 @@ services:
       - ${TORRENTS_FOLDER}:/downloads
       - ${MOVIES_FOLDER}:/movies
     ports:
-      - 7878:7878
+      - ${RADARR_WEBUI_PORT:-7878}:7878
     restart: unless-stopped
 
   bazarr:
@@ -74,6 +74,8 @@ services:
       - ./config/bazarr:/config
       - ${TORRENTS_FOLDER}:/downloads
       - ./subtitles:/subtitles
+      - ${MOVIES_FOLDER}:/movies
+      - ${TVSHOWS_FOLDER}:/tvshows
     ports:
       - ${BAZARR_WEBUI_PORT:-6767}:6767
     restart: unless-stopped
