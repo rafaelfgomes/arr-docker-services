@@ -40,7 +40,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/sonarr:/config
-      - ${TORRENTS_FOLDER}:/downloads
+      - ${DOWNLOADS_FOLDER}:/downloads
       - ${TVSHOWS_FOLDER}:/tvshows
     ports:
       - ${SONARR_WEBUI_PORT:-8989}:8989
@@ -57,7 +57,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/radarr:/config
-      - ${TORRENTS_FOLDER}:/downloads
+      - ${DOWNLOADS_FOLDER}:/downloads
       - ${MOVIES_FOLDER}:/movies
     ports:
       - ${RADARR_WEBUI_PORT:-7878}:7878
@@ -74,8 +74,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/bazarr:/config
-      - ${TORRENTS_FOLDER}:/downloads
-      - ./subtitles:/subtitles
+      - ${DOWNLOADS_FOLDER}:/downloads
+      - ${SUBTITLES_FOLDER}:/subtitles
       - ${MOVIES_FOLDER}:/movies
       - ${TVSHOWS_FOLDER}:/tvshows
     ports:
@@ -93,8 +93,10 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/readarr:/config
-      - ${TORRENTS_FOLDER}:/downloads
-      - ./books:/books
+      - ${DOWNLOADS_FOLDER}:/downloads
+      - ${MANGAS_FOLDER}:/mangas
+      - ${BOOKS_FOLDER}:/books
+      - ${HQS_FOLDER}:/hqs
     ports:
       - ${READARR_WEBUI_PORT:-8787}:8787
     restart: unless-stopped
