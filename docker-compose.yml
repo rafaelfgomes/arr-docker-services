@@ -40,7 +40,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/sonarr:/config
-      - ${DOWNLOADS_FOLDER}:/downloads
+      - ${TORRENTS_FOLDER}:/downloads
       - ${TVSHOWS_FOLDER}:/tvshows
     ports:
       - ${SONARR_WEBUI_PORT:-8989}:8989
@@ -57,7 +57,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/radarr:/config
-      - ${DOWNLOADS_FOLDER}:/downloads
+      - ${TORRENTS_FOLDER}:/downloads
       - ${MOVIES_FOLDER}:/movies
     ports:
       - ${RADARR_WEBUI_PORT:-7878}:7878
@@ -74,7 +74,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/bazarr:/config
-      - ${DOWNLOADS_FOLDER}:/downloads
+      - ${TORRENTS_FOLDER}:/downloads
       - ${SUBTITLES_FOLDER}:/subtitles
       - ${MOVIES_FOLDER}:/movies
       - ${TVSHOWS_FOLDER}:/tvshows
@@ -93,7 +93,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ./config/readarr:/config
-      - ${DOWNLOADS_FOLDER}:/downloads
+      - ${TORRENTS_FOLDER}:/downloads
       - ${MANGAS_FOLDER}:/mangas
       - ${BOOKS_FOLDER}:/books
       - ${HQS_FOLDER}:/hqs
