@@ -89,25 +89,25 @@ services:
     networks:
       - net
 
-  readarr:
-    image: lscr.io/linuxserver/readarr:develop
-    container_name: readarr
-    hostname: readarr
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TIMEZONE}
-    volumes:
-      - ${READARR_CONFIG_FOLDER:-./readarr-config}:/config
-      - ${TORRENTS_FOLDER}:/downloads
-      - ${MANGAS_FOLDER}:/mangas
-      - ${BOOKS_FOLDER}:/books
-      - ${HQS_FOLDER}:/hqs
-    ports:
-      - ${READARR_WEBUI_PORT:-8787}:8787
-    restart: unless-stopped
-    networks:
-      - net
+  # readarr:
+  #   image: lscr.io/linuxserver/readarr:develop
+  #   container_name: readarr
+  #   hostname: readarr
+  #   environment:
+  #     - PUID=${PUID}
+  #     - PGID=${PGID}
+  #     - TZ=${TIMEZONE}
+  #   volumes:
+  #     - ${READARR_CONFIG_FOLDER:-./readarr-config}:/config
+  #     - ${TORRENTS_FOLDER}:/downloads
+  #     - ${MANGAS_FOLDER}:/mangas
+  #     - ${BOOKS_FOLDER}:/books
+  #     - ${HQS_FOLDER}:/hqs
+  #   ports:
+  #     - ${READARR_WEBUI_PORT:-8787}:8787
+  #   restart: unless-stopped
+  #   networks:
+  #     - net
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr
